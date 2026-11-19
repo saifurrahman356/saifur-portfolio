@@ -285,6 +285,7 @@ const profile = {
       ],
     },
   ],
+
   projects: [
     {
       number: "01",
@@ -310,7 +311,39 @@ const profile = {
         "A document-scanning workflow using OCR and machine-learning techniques to automate data extraction.",
       stack: ["Spring Boot", "OCR", "Machine Learning"],
     },
+    {
+      number: "04",
+      title: "National e-Government Procurement Platform",
+      category: "E-Government · Enterprise Workflow · Digital Transformation",
+      description:
+        "A centralized government procurement platform digitizing the complete procurement lifecycle, from tender planning and electronic submission to evaluation, contract management, e-payments, and procurement auditing.",
+      stack: [
+        "Java",
+        "J2EE",
+        "Enterprise Architecture",
+        "Workflow Management",
+        "Database Systems",
+        "System Integration",
+      ],
+    },
+    {
+      number: "05",
+      title: "National Biometric Voter Registration System",
+      category: "Government · Biometrics · National Identity",
+      description:
+        "Integration of Neurotechnology biometric SDKs into Bangladesh's national voter registration system. Implemented biometric identification and fingerprint/face matching capabilities to support large-scale identity verification and duplicate voter detection across a database of more than 80 million citizens.",
+      stack: [
+        "Java",
+        "J2EE",
+        "Neurotechnology MegaMatcher SDK",
+        "Fingerprint Recognition",
+        "Facial Recognition",
+        "Biometric Integration",
+        "Database Systems",
+      ],
+    },
   ],
+
   languages: ["Bangla — Native", "English — Fluent", "German — Fluent"],
 };
 
@@ -326,6 +359,6 @@ app.use((_req: Request, res: Response) => {
   res.status(404).render("404.njk", { profile });
 });
 
-app.listen(PORT, () => {
-  console.log(`Portfolio running at http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Portfolio running on port ${PORT}`);
 });
