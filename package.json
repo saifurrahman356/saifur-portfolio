@@ -1,0 +1,22 @@
+{
+  "name": "saifur-rahman-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal portfolio built with TypeScript, Express and Nunjucks",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "nunjucks": "^3.2.4"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.4",
+    "@types/nunjucks": "^3.2.6",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  }
+}

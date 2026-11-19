@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of {{ profile.name }}, software engineer and architect based in {{ profile.location }}.">
+  <title>{{ profile.name }} — Software Engineer & Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Go to home"><span class="brand-mark">SR</span><span>Saifur Rahman</span></a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a class="nav-cta" href="#contact">Let's talk <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> AVAILABLE FOR THE RIGHT OPPORTUNITY</p>
+        <h1>Building software<br>that <span class="gradient-text">moves business</span><span class="period">.</span></h1>
+        <p class="hero-subtitle">{{ profile.role }}</p>
+        <p class="hero-intro">{{ profile.intro }}</p>
+        <div class="hero-actions"><a class="button button-primary" href="#projects">Explore my work <span>↘</span></a><a class="button button-ghost" href="mailto:{{ profile.email }}">Get in touch <span>↗</span></a></div>
+        <div class="hero-meta"><span>⌖ {{ profile.location }}</span><span>20 years of experience</span></div>
+      </div>
+      <div class="hero-art" aria-label="Abstract software architecture illustration">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="core-card"><span class="core-label">SYSTEM.STATUS</span><strong>BUILD<span>_</span>BETTER</strong><div class="core-line"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="core-foot">ARCHITECTURE · ENGINEERING · IMPACT</span></div>
+        <span class="float-chip chip-java">JAVA</span><span class="float-chip chip-cloud">☁ CLOUD</span><span class="float-chip chip-kafka">KAFKA</span><span class="float-chip chip-api">API ↗</span>
+        <div class="art-cross cross-one">＋</div><div class="art-cross cross-two">＋</div>
+      </div>
+      <a class="scroll-cue" href="#about">SCROLL TO EXPLORE <span>↓</span></a>
+    </section>
+
+    <section class="intro-strip"><div class="section-wrap strip-inner"><span>ARCHITECTURE</span><b>✳</b><span>BACKEND ENGINEERING</span><b>✳</b><span>TECHNICAL LEADERSHIP</span><b>✳</b><span>CLOUD & DISTRIBUTED SYSTEMS</span></div></section>
+
+    <section class="section-wrap section-block" id="about">
+      <div class="section-heading"><p class="eyebrow">01 / ABOUT</p><h2>Engineering with<br><span class="muted-heading">purpose and perspective.</span></h2></div>
+      <div class="about-grid"><p class="about-lead">I connect the big picture with the details that make software work.</p><div class="about-detail"><p>{{ profile.summary }}</p><p>My experience spans fleet technology, vehicle analytics, identity systems, logistics and enterprise software. I enjoy solving challenging engineering problems while helping teams do their best work.</p><div class="language-list">{% for language in profile.languages %}<span>{{ language }}</span>{% endfor %}</div></div></div>
+    </section>
+
+    <section class="section-wrap section-block" id="skills">
+      <div class="section-heading"><p class="eyebrow">02 / TOOLKIT</p><h2>The tools behind<br><span class="muted-heading">the outcomes.</span></h2></div>
+      <div class="skills-grid">{% for group in profile.skills %}<article class="skill-card"><span class="card-index">0{{ loop.index }}</span><h3>{{ group.group }}</h3><div class="tag-list">{% for item in group.items %}<span>{{ item }}</span>{% endfor %}</div></article>{% endfor %}</div>
+    </section>
+
+    <section class="section-block experience-section" id="experience"><div class="section-wrap">
+      <div class="section-heading"><p class="eyebrow">03 / EXPERIENCE</p><h2>A career built on<br><span class="muted-heading">solving hard problems.</span></h2></div>
+      <div class="timeline">{% for job in profile.experience %}<article class="timeline-item"><div class="timeline-date">{{ job.period }}</div><div class="timeline-content"><div class="job-title-row"><div><h3>{{ job.role }}</h3><p class="company">{{ job.company }} <span>· {{ job.place }}</span></p></div><span class="timeline-arrow">↗</span></div><ul>{% for point in job.points %}<li>{{ point }}</li>{% endfor %}</ul></div></article>{% endfor %}</div>
+    </div></section>
+
+    <section class="section-wrap section-block" id="projects">
+      <div class="section-heading project-heading"><div><p class="eyebrow">04 / SELECTED WORK</p><h2>Complex problems.<br><span class="muted-heading">Practical solutions.</span></h2></div><p class="section-note">A selection of solution areas from my professional experience. Descriptions are generalized; implementation details may be confidential.</p></div>
+      <div class="projects-grid">{% for project in profile.projects %}<article class="project-card"><div class="project-top"><span>{{ project.number }} / CASE STUDY</span><span class="project-icon">↗</span></div><div class="project-visual visual-{{ loop.index }}"><div class="visual-window"><div class="window-dots"><i></i><i></i><i></i></div><div class="visual-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="visual-line"></div></div></div><p class="project-category">{{ project.category }}</p><h3>{{ project.title }}</h3><p class="project-description">{{ project.description }}</p><div class="tag-list">{% for item in project.stack %}<span>{{ item }}</span>{% endfor %}</div></article>{% endfor %}</div>
+    </section>
+
+    <section class="contact-section" id="contact"><div class="section-wrap contact-inner"><p class="eyebrow">05 / CONTACT</p><h2>Have a good problem<br>to <span class="gradient-text">solve together?</span></h2><p>Let's talk about software architecture, engineering leadership or your next ambitious product.</p><a class="button button-primary" href="mailto:{{ profile.email }}?subject=Let's%20connect">Start a conversation <span>↗</span></a><div class="contact-bottom"><span>{{ profile.location }}</span><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></div></div></section>
+  </main>
+  <footer class="site-footer"><div class="section-wrap"><span>© {{ profile.name }} {{ 2026 }}</span><a href="#home">Back to top ↑</a></div></footer>
+</body>
+</html>
